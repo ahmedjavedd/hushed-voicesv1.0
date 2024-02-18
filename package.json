@@ -1,10 +1,13 @@
 {
   "name": "hushed-voices",
   "private": true,
+  "homepage": "https://ahmedjavedd.github.io/hushed-voicesv1.0/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -13,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.0",
     "@tinymce/tinymce-react": "^4.3.2",
     "appwrite": "^13.0.1",
+    "gh-pages": "^6.1.1",
     "html-react-parser": "^5.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
