@@ -13,6 +13,8 @@ export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
+            category: post?.category || "",
+            featuredImage:post?.featuredImage||"",
             slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
@@ -23,6 +25,7 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
+        debugger
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
@@ -42,9 +45,10 @@ export default function PostForm({ post }) {
             const file = await appwriteService.uploadFile(data.image[0]);
 
             if (file) {
+            
                 const fileId = file.$id;
                 data.featuredImage = fileId;
-                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id, documentId: ID.unique});
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id});
 
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
@@ -82,6 +86,12 @@ export default function PostForm({ post }) {
                     placeholder="Title"
                     className="mb-4"
                     {...register("title", { required: true })}
+                />
+                 <Input
+                    label="Category :"
+                    placeholder="Category"
+                    className="mb-4"
+                    {...register("category", { required: true })}
                 />
                 <Input
                     label="Slug :"

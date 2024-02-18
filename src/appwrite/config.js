@@ -14,12 +14,12 @@ export class Service{
         this.storage = new Storage(this.client)
     }
 
-    async createPost({ Id,title, category, content, featuredImage, status, userId }) {
+    async createPost({ title, category, content, featuredImage, status, userId }) {
         try {
             return await this.database.createDocument(
                 conf.appwriteDataBaseId,
                 conf.appwriteCollectionId,
-                  ID.unique, {Id,
+                  ID.unique(), {
                     title,
                     category,
                     content,
@@ -66,7 +66,7 @@ export class Service{
        
     }
     async getPost(slug) {
-        debugger    
+       
         try {
             return await this.database.getDocument(
                 conf.appwriteDataBaseId,

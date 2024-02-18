@@ -24,11 +24,11 @@ function Header() {
   //     slug: "/signup",
   //     active: !authStatus,
   // },
-  {
-      name: "All Posts",
-      slug: "/all-posts",
-      active: true,
-  },
+  // {
+  //     name: "All Posts",
+  //     slug: "/all-posts",
+  //     active: true,
+  // },
   {
       name: "Add Post",
       slug: "/add-post",
