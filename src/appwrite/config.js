@@ -77,8 +77,9 @@ export class Service{
         }
         
     }
-
-    async getPosts(queries=Query.equal[("status","active")]) {
+// 
+    async getPosts(queries = Query.equal[("status", "active")]) {
+        
         try {
             return await this.database.listDocuments(
             conf.appwriteDataBaseId,
@@ -119,9 +120,10 @@ export class Service{
         }
     }
 
-    async previewFile(fileId) {
+    previewFile(fileId) {
+        
         try {
-             return this.storage.getFilePreview(conf.appwriteBucketId,fileId)
+           return this.storage.getFilePreview(conf.appwriteBucketId, fileId)
         } catch (error) {
             
         }

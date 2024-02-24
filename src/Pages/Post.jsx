@@ -14,11 +14,12 @@ export default function Post() {
     const userData = useSelector((state) => state.auth.userData);
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
-
+   
     useEffect(() => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
                 if (post) setPost(post);
+                
                 else navigate("/");
             });
         } else navigate("/");
